@@ -20,10 +20,11 @@ Before starting, ensure you have:
 
 Check your installed versions:
 
-bash
+```bash
 node --version  # Should show v18.0.0 or higher
 npm --version   # Should show 9.0.0 or higher
 git --version   # Any recent version
+```
 
 
 ---
@@ -32,15 +33,17 @@ git --version   # Any recent version
 
 ### Step 1: Clone the Repository
 
-bash
-git clone https://github.com/yourusername/fairgate.git
-cd fairgate
+```bash
+git clone https://github.com/Extation/FairGate.git
+cd FairGate
+```
 
 
 ### Step 2: Install Dependencies
 
-bash
+```bash
 npm install
+```
 
 
 This installs all required packages including:
@@ -63,13 +66,14 @@ FairGate uses environment variables to configure API keys and network settings.
 
 #### Create the environment file
 
-bash
+```bash
 cp .env.example .env.local
+```
 
 
 #### Edit `.env.local` with your configuration
 
-env
+```env
 # ================================================================
 # REQUIRED — FairScale API Configuration
 # ================================================================
@@ -92,6 +96,7 @@ NEXT_PUBLIC_SOLANA_NETWORK=mainnet-beta
 #   - QuickNode: https://quicknode.com
 #   - Alchemy: https://alchemy.com
 NEXT_PUBLIC_SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+```
 
 
 #### Important Notes
@@ -104,7 +109,7 @@ NEXT_PUBLIC_SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
 
 For production or development with better rate limits:
 
-env
+```env
 # Helius (recommended for production)
 NEXT_PUBLIC_SOLANA_RPC_URL=https://mainnet.helius-rpc.com/?api-key=YOUR_KEY
 
@@ -113,6 +118,7 @@ NEXT_PUBLIC_SOLANA_RPC_URL=https://YOUR_ENDPOINT.solana-mainnet.quiknode.pro/YOU
 
 # Alchemy
 NEXT_PUBLIC_SOLANA_RPC_URL=https://solana-mainnet.g.alchemy.com/v2/YOUR_KEY
+```
 
 
 ---
@@ -123,8 +129,9 @@ NEXT_PUBLIC_SOLANA_RPC_URL=https://solana-mainnet.g.alchemy.com/v2/YOUR_KEY
 
 Start the development server with hot-reload:
 
-bash
+```bash
 npm run dev
+```
 
 
 The application will be available at:
@@ -136,12 +143,13 @@ The application will be available at:
 
 Create an optimized production build:
 
-bash
+```bash
 # Build the application
 npm run build
 
 # Start the production server
 npm start
+```
 
 
 The build process:
@@ -161,10 +169,11 @@ Build time: ~30-60 seconds
 FairGate is optimized for Vercel deployment:
 
 1. Push to GitHub
-   bash
+   ```bash
    git add .
    git commit -m "Initial commit"
    git push origin main
+   ```
    
 
 2. Import to Vercel
@@ -209,12 +218,13 @@ For custom deployments, ensure:
 
 Run on a different port:
 
-bash
+```bash
 # Development
 npm run dev -- -p 3001
 
 # Production
 npm start -- -p 3001
+```
 
 
 ---
@@ -224,8 +234,9 @@ npm start -- -p 3001
 ### Test the Setup
 
 1. Start the development server
-   bash
+   ```bash
    npm run dev
+   ```
    
 
 2. Open your browser
@@ -246,13 +257,13 @@ npm start -- -p 3001
 
 Test the FairScale API proxy:
 
-bash
+```bash
 # Replace with your actual wallet address
 curl "http://localhost:3000/api/score?wallet=YOUR_WALLET_ADDRESS"
-
+```
 
 Expected response:
-json
+```json
 {
   "wallet": "YOUR_WALLET_ADDRESS",
   "fairscore": 65.5,
@@ -260,6 +271,7 @@ json
   "badges": [...],
   ...
 }
+```
 
 
 ---
@@ -276,12 +288,13 @@ Solution:
 3. Ensure no quotes around the API key
 4. Restart the dev server: `Ctrl+C` then `npm run dev`
 
-bash
+```bash
 # Verify the file exists
 cat .env.local
 
 # Should show:
 # FAIRSCALE_API_KEY=your_key_here
+```
 
 
 ### Wallet Not Connecting
@@ -300,7 +313,7 @@ Solutions:
 Problem: Another application is using port 3000.
 
 Solution:
-bash
+```bash
 # Option 1: Use a different port
 npm run dev -- -p 3001
 
@@ -310,6 +323,7 @@ taskkill /PID <PID_NUMBER> /F
 
 # Option 2: Kill the process (Mac/Linux)
 lsof -ti:3000 | xargs kill -9
+```
 
 
 ### FairScale API Errors
@@ -327,7 +341,7 @@ Solutions:
 Problem: `npm run build` fails with errors.
 
 Solutions:
-bash
+```bash
 # Clear Next.js cache
 rm -rf .next
 
@@ -337,6 +351,7 @@ npm install
 
 # Try building again
 npm run build
+```
 
 
 ### TypeScript Errors
@@ -344,12 +359,13 @@ npm run build
 Problem: Type checking errors during development.
 
 Solution:
-bash
+```bash
 # Check for TypeScript errors
 npx tsc --noEmit
 
 # Update TypeScript definitions
 npm install --save-dev @types/node @types/react @types/react-dom
+```
 
 
 ### Module Not Found Errors
@@ -357,7 +373,7 @@ npm install --save-dev @types/node @types/react @types/react-dom
 Problem: Import errors for specific modules.
 
 Solution:
-bash
+```bash
 # Reinstall dependencies
 npm install
 
@@ -365,6 +381,7 @@ npm install
 npm cache clean --force
 rm -rf node_modules package-lock.json
 npm install
+```
 
 
 ---
@@ -485,14 +502,16 @@ Ensure `FAIRSCALE_API_KEY` is set in `.env.local`. Restart the dev server after 
 - Wait and retry on 429 (rate limit) responses
 
 ### Build failures
-bash
+```bash
 rm -rf .next
 npm run build
+```
 
 
 ### Port 3000 in use
-bash
+```bash
 npm run dev -- -p 3001
+```
 
 
 ---
