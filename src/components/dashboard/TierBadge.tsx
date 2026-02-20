@@ -46,7 +46,7 @@ export const TierBadge: FC<TierBadgeProps> = ({
         <span className={config.textColor}>{config.name}</span>
       )}
       {showMultiplier && (
-        <span className="text-gray-600 dark:text-gray-400 text-xs ml-1">
+        <span className="text-gray-700 dark:text-gray-400 text-xs ml-1">
           {config.multiplier}x
         </span>
       )}

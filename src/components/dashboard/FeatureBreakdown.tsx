@@ -27,11 +27,12 @@ export const FeatureBreakdown: FC<FeatureBreakdownProps> = ({ features }) => {
 
     switch (config.format) {
       case "percent":
-        return formatPercentage(value);
+        // Percentile scores come as 0-100, just add % sign
+        return `${value.toFixed(1)}%`;
       case "number":
         return formatNumber(value);
       case "days":
-        return `${value} days`;
+        return `${Math.round(value)} days`;
       case "hours":
         return `${value.toFixed(1)}h`;
       default:
@@ -44,13 +45,17 @@ export const FeatureBreakdown: FC<FeatureBreakdownProps> = ({ features }) => {
     if (!config) return 0;
 
     if (config.format === "percent") {
-      return value * 100;
+      // Percentile scores are 0-100, so use directly as percentage width
+      return Math.min(value, 100);
     }
     // For other formats, normalize to a reasonable scale
-    if (key === "tx_count") return Math.min((value / 5000) * 100, 100);
+    if (key === "tx_count") return Math.min((value / 10000) * 100, 100);
     if (key === "active_days") return Math.min((value / 365) * 100, 100);
     if (key === "wallet_age_days") return Math.min((value / 730) * 100, 100);
-    if (key === "median_gap_hours") return Math.max(100 - (value / 24) * 100, 0);
+    if (key === "median_gap_hours") {
+      // Lower median gap is better (more active), so invert the scale
+      return Math.max(100 - (value / 48) * 100, 10);
+    }
     return 50;
   };
 
@@ -61,7 +66,7 @@ export const FeatureBreakdown: FC<FeatureBreakdownProps> = ({ features }) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Feature Breakdown</CardTitle>
+        <CardTitle className="text-gray-900 dark:text-white">Feature Breakdown</CardTitle>
       </CardHeader>
       <div className="space-y-4">
         {featureEntries.map(([key, value]) => {

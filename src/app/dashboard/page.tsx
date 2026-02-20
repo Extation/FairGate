@@ -110,7 +110,7 @@ const DashboardPage: FC = () => {
           </div>
         </div>
         <div className="mt-4 md:mt-0 flex items-center space-x-3">
-          <span className="text-gray-500 dark:text-gray-500 text-xs">
+          <span className="text-gray-600 dark:text-gray-500 text-xs">
             Last updated: {formatDateTime(score.timestamp)}
           </span>
           <Button
@@ -154,7 +154,7 @@ const DashboardPage: FC = () => {
               <h2 className={`text-2xl font-bold ${tierConfig.textColor}`}>
                 {tierConfig.name} Tier
               </h2>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
+              <p className="text-gray-700 dark:text-gray-400 text-sm">
                 Score range: {tierConfig.minScore} - {tierConfig.maxScore} |
                 Multiplier: {tierConfig.multiplier}x
               </p>
@@ -165,7 +165,7 @@ const DashboardPage: FC = () => {
               {tierConfig.benefits.map((benefit: string, i: number) => (
                 <span
                   key={i}
-                  className="px-3 py-1 bg-gray-100 dark:bg-dark-700/50 rounded-full text-xs text-gray-700 dark:text-gray-300"
+                  className="px-3 py-1 bg-gray-100 dark:bg-dark-700/50 rounded-full text-xs text-gray-800 dark:text-gray-300"
                 >
                   ✓ {benefit}
                 </span>

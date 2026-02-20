@@ -29,22 +29,17 @@ export const ScoreCard: FC<ScoreCardProps> = ({
       </div>
       <div className="relative z-10">
         <div className="flex items-center justify-between mb-3">
-          <span className="text-gray-600 dark:text-gray-400 text-sm font-medium">{label}</span>
+          <span className="text-gray-900 dark:text-gray-200 text-sm font-semibold">{label}</span>
           <span className="text-2xl">{icon}</span>
         </div>
         <div className="flex items-end space-x-2 mb-3">
-          <span
-            className={cn(
-              "text-4xl font-bold bg-gradient-to-r bg-clip-text text-transparent",
-              gradient
-            )}
-          >
+          <span className="text-4xl font-bold text-gray-900 dark:text-white">
             {score.toFixed(1)}
           </span>
-          <span className="text-gray-500 text-sm mb-1">/ {maxScore}</span>
+          <span className="text-gray-700 dark:text-gray-400 text-sm mb-1 font-medium">/ {maxScore}</span>
         </div>
         {description && (
-          <p className="text-gray-500 text-xs">{description}</p>
+          <p className="text-gray-700 dark:text-gray-300 text-xs font-medium">{description}</p>
         )}
         <div className="mt-3 w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2 overflow-hidden">
           <div
