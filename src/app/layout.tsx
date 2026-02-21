@@ -23,9 +23,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "FairGate" }],
   icons: {
-    icon: "/images/fairscale_logo.jpg",
-    shortcut: "/images/fairscale_logo.jpg",
-    apple: "/images/fairscale_logo.jpg",
+    icon: "/images/fair_logo.jpg",
+    shortcut: "/images/fairgate_logo.png",
+    apple: "/images/fairgate_logo.png",
   },
   openGraph: {
     title: "FairGate - Reputation-Gated Token Launchpad",

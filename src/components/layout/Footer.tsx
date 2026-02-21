@@ -14,7 +14,7 @@ export const Footer: FC = () => {
             <Link href="/" className="flex items-center space-x-2 mb-4">
               <div className="relative w-8 h-8 overflow-hidden rounded-lg shadow-lg shadow-fair-500/25">
                 <Image
-                  src="/images/fairscale_logo.jpg"
+                  src="/images/fairgate_logo.png"
                   alt="FairGate Logo"
                   width={32}
                   height={32}

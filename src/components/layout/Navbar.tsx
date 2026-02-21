@@ -21,7 +21,7 @@ export const Navbar: FC = () => {
           <Link href="/" className="flex items-center space-x-3 group">
             <div className="relative w-10 h-10 overflow-hidden rounded-lg shadow-lg shadow-fair-500/25 group-hover:shadow-fair-500/40 transition-shadow">
               <Image
-                src="/images/fairscale_logo.jpg"
+                src="/images/fairgate_logo.png"
                 alt="FairGate Logo"
                 width={40}
                 height={40}
